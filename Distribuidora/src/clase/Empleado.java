@@ -5,7 +5,7 @@ public abstract class Empleado {
 	private String nombre;
 	private final Integer cuil;
 	private Departamento departamento;
-	private Double sueldoBase = 25000.0;
+	private final Double sueldoBase ;
 	private Double porcentajeSueldoExtra;
 	private Double porcentajeDescuento;
 
@@ -17,12 +17,12 @@ public abstract class Empleado {
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
 
-	public Empleado(String nombre, Integer cuil, Departamento departamento, Double sueldoBase) {
+	public Empleado(String nombre, Integer cuil, Departamento departamento) {
 		super();
 		this.nombre = nombre;
 		this.cuil = cuil;
 		this.departamento = departamento;
-		this.sueldoBase = sueldoBase;
+		this.sueldoBase = 40000.0;
 	}
 
 	public  Double calcularSueldo() {
@@ -51,9 +51,7 @@ public abstract class Empleado {
 		return sueldoBase;
 	}
 
-	public void setSueldoBase(Double sueldoBase) {
-		this.sueldoBase = sueldoBase;
-	}
+	
 
 	public String getNombre() {
 		return nombre;
@@ -61,6 +59,31 @@ public abstract class Empleado {
 
 	public Integer getCuil() {
 		return cuil;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cuil == null) ? 0 : cuil.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		if (cuil == null) {
+			if (other.cuil != null)
+				return false;
+		} else if (!cuil.equals(other.cuil))
+			return false;
+		return true;
 	}
 	
 	
