@@ -51,22 +51,26 @@ public class Distribuidora {
 
     public Boolean agregarLote(Producto producto) {
         Boolean seAgrego = false;
-        for (int i = 0; i < productos.length; i++) {
-            if (productos[i] == null) {
-                productos[i] = producto;
-                seAgrego = true;
-                break;
+        if (this.buscarLote(producto.getnLote()) == null) {
+            for (int i = 0; i < productos.length; i++) {
+                if (productos[i] == null) {
+                    productos[i] = producto;
+                    seAgrego = true;
+                    break;
+                }
             }
         }
         return seAgrego;
     }
     public Boolean agregarCLiente(Cliente cliente) {
         Boolean seAgrego = false;
-        for (int i = 0; i < clientes.length; i++) {
-            if (clientes[i] == null) {
-                clientes[i] = cliente;
-                seAgrego = true;
-                break;
+        if (this.buscarCliente(cliente.getCuil())== null) {
+            for (int i = 0; i < clientes.length; i++) {
+                if (clientes[i] == null) {
+                    clientes[i] = cliente;
+                    seAgrego = true;
+                    break;
+                }
             }
         }
         return seAgrego;
