@@ -5,7 +5,7 @@ public abstract class Empleado {
 	private String nombre;
 	private final Integer cuil;
 	private Departamento departamento;
-	private Double sueldoBase = 25000.0;
+	private Double sueldoBase ;
 	private Double porcentajeSueldoExtra;
 	private Double porcentajeDescuento;
 
