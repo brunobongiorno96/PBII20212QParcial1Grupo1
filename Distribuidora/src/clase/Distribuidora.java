@@ -7,6 +7,8 @@ public class Distribuidora {
     private Cliente [] clientes;
     private Producto[] productosVendidos;
 
+
+
     public Distribuidora(String nombre) {
         this.nombre = nombre;
         this.productos = new Producto[100];
@@ -30,15 +32,22 @@ public class Distribuidora {
         this.productos = productos;
     }
 
-    /*public Boolean comprobarSiExisteProducto (Producto producto) {
-        Boolean resultado = false;
-        for (int i = 0; i < productos.length; i++) {
-            if (productos[i].equals(producto)) {
-                resultado = true;
-            }
-        }
-        return resultado;
-    }*/
+    public Cliente[] getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Cliente[] clientes) {
+        this.clientes = clientes;
+    }
+
+    public Producto[] getProductosVendidos() {
+        return productosVendidos;
+    }
+
+    public void setProductosVendidos(Producto[] productosVendidos) {
+        this.productosVendidos = productosVendidos;
+    }
+
 
     public Boolean agregarLote(Producto producto) {
         Boolean seAgrego = false;
@@ -89,8 +98,9 @@ public class Distribuidora {
     }
 
 
-    public Boolean venderLote (Integer numeroLote){
+    public Boolean venderLote (Integer numeroLote, Integer cuilCliente){
         Boolean seVendio = false;
+        if (this.buscarCliente(cuilCliente) != null){
         for (int i = 0; i < productos.length; i++) {
             if (productos[i] != null){
                 if (productos[i].getnLote().equals(numeroLote)){
@@ -101,21 +111,22 @@ public class Distribuidora {
                 }
             }
         }
+        }
         return seVendio;
     }
 
-    public Boolean agregarLoteVendido (Producto producto){
+    public Boolean agregarLoteVendido (Producto lote){
         Boolean seAgrego = false;
         for (int i = 0; i < productosVendidos.length; i++) {
             if (productosVendidos[i] == null){
-                productosVendidos[i] = producto;
+                productosVendidos[i] = lote;
                 seAgrego = true;
                 break;
             }
         }
         return seAgrego;
     }
-    public Producto [] productosVendidos (){
+    public Producto [] lotesVendidos (){
         return productosVendidos;
 
     }
