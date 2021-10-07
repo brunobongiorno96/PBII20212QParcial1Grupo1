@@ -69,6 +69,28 @@ public class testDistribuidora {
 	      assertTrue(valorObt); 
 	     
 	    }
+	 @Test
+		public void queSePuedaCalcularSueldoDeEmpleados() {
+			Departamento departamento= new Departamento("DepartamentoNombre");
+			Empleado len= new Gerente("Len",20,departamento);
+			Empleado k= new Administrativo("K",19,departamento);
+			Empleado u= new Operativo("U",11,departamento);
+			
+			Distribuidora nueva= new Distribuidora("Wawa");
+			
+			nueva.agregarEmpleado(len);
+			nueva.agregarEmpleado(k);
+			nueva.agregarEmpleado(u);
+
+			Double sueldoEsperadoLen= len.getSueldoBase()+4000.0;
+			Double sueldoEsperadoK= k.getSueldoBase()+(k.getSueldoBase()*0.05);
+			Double sueldoEsperadoU= u.getSueldoBase()+(u.getSueldoBase()*0.1);
+			
+			assertEquals(sueldoEsperadoLen, len.calcularSueldo(), 0.01);
+			assertEquals(sueldoEsperadoK, k.calcularSueldo(), 0.01);
+			assertEquals(sueldoEsperadoU, u.calcularSueldo(), 0.01);
+			
+		}
 
 
 
