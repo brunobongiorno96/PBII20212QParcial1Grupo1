@@ -39,6 +39,17 @@ public class ProductoTest {
 
 
     }
+    
+	 @Test
+	 public void queNoSePuedaAgregarDosClientesConMismoCuil(){
+	      Distribuidora distribuidora = new Distribuidora("NombreDistri");
+	      Cliente len = new Cliente("Len", 22);
+	      Cliente k = new Cliente("K", 22);
+	      
+	      distribuidora.agregarCLiente(len);
+	      assertFalse(distribuidora.agregarCLiente(k));
+
+	}
 
     @Test
     public  void queSePuedaBuscarUnLotePorSuNumero () {

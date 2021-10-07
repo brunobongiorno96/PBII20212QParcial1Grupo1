@@ -58,12 +58,16 @@ public class testDistribuidora {
 	 public void queSePuedaEliminarUnCliente(){
 	      Distribuidora distribuidora = new Distribuidora("NombreDistri");
 	      Cliente len = new Cliente("Len", 22);
+	      Cliente k = new Cliente("K", 19);
 	      
 	      distribuidora.agregarCLiente(len);
+	      distribuidora.agregarCLiente(k);
+	      
 	      Boolean valorObt= distribuidora.eliminarCliente(len);
 	      
 	      assertTrue(valorObt); 
 	    }
+
 
 
 

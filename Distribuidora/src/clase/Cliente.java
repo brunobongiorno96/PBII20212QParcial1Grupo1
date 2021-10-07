@@ -25,4 +25,30 @@ public class Cliente {
     public void setCuil(Integer cuil) {
         this.cuil = cuil;
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cuil == null) ? 0 : cuil.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (cuil == null) {
+			if (other.cuil != null)
+				return false;
+		} else if (!cuil.equals(other.cuil))
+			return false;
+		return true;
+	}
+    
 }
