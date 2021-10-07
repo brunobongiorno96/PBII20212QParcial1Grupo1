@@ -53,6 +53,17 @@ public class testDistribuidora {
 		
 		assertEquals(valorEsperado, listaDeEmpleadosDespedidos[0].getNombre());
 	}
+	
+	 @Test
+	 public void queSePuedaEliminarUnCliente(){
+	      Distribuidora distribuidora = new Distribuidora("NombreDistri");
+	      Cliente len = new Cliente("Len", 22);
+	      
+	      distribuidora.agregarCLiente(len);
+	      Boolean valorObt= distribuidora.eliminarCliente(len);
+	      
+	      assertTrue(valorObt); 
+	    }
 
 
 

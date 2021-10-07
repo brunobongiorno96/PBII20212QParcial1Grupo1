@@ -87,9 +87,4 @@ public abstract class Empleado {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
->>>>>>> 20ec244abaef26e29fd0fb1204b19ffb92c35aaf
 }

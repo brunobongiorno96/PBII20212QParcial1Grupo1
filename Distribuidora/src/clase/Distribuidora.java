@@ -89,6 +89,18 @@ public class Distribuidora {
 		}
 		return seAgrego;
 	}
+	
+	public Boolean eliminarCliente(Cliente cliente) {
+		Boolean seElimino=false;
+		for (int i = 0; i < clientes.length; i++) {
+			if(clientes[i]!=null)
+				if(clientes[i].getCuil().equals(cliente.getCuil())) {
+					clientes[i]=null;
+					seElimino=true;
+					break;
+				}
+		}return seElimino;
+	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {
 
