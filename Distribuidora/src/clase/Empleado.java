@@ -77,8 +77,9 @@ public abstract class Empleado {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+// Lo comento para que no compare si las clases son distintas
+//		if (getClass() != obj.getClass())
+//			return false;
 		Empleado other = (Empleado) obj;
 		if (cuil == null) {
 			if (other.cuil != null)

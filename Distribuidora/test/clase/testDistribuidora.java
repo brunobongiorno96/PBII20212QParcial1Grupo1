@@ -26,15 +26,11 @@ public class testDistribuidora {
 		
 		Departamento nuevoDepto= new Departamento("finanzas");
 		Empleado nuevo= new Gerente("haziel",419284,nuevoDepto);
-		Empleado nuevo2= new Gerente("pablo",419284,nuevoDepto);
+		Empleado nuevo2= new Operativo("pablo",419284,nuevoDepto);
 		Distribuidora nueva= new Distribuidora("Fargo");
 		
 		nueva.agregarEmpleado(nuevo);
-		
-		
-//retocar para que no agregue dos cuit iguales de diferentes puestos
 
-		
 		assertFalse(nueva.agregarEmpleado(nuevo2));
 		
 		

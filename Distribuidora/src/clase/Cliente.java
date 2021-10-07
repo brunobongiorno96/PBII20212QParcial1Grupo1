@@ -51,8 +51,8 @@ public class Cliente {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
 		Cliente other = (Cliente) obj;
 		if (cuil == null) {
 			if (other.cuil != null)

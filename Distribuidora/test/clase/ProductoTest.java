@@ -156,7 +156,7 @@ public class ProductoTest {
         distribuidora.agregarEmpleado(u);
 
         assertTrue(distribuidora.venderLoteAEmpleado(100, len));
-//        assertTrue(distribuidora.venderLoteAEmpleado(102, k));
+        assertTrue(distribuidora.venderLoteAEmpleado(102, k));
 //        assertTrue(distribuidora.venderLoteAEmpleado(101, u));
         
         Producto [] listaObtenida = distribuidora.getProductosVendidos();
@@ -173,12 +173,36 @@ public class ProductoTest {
         assertNull(listaObtenida2[0]);
 
     }
+    //No me deja vender a mas de 1 persona
+    @Test
+    public void queSePuedaVenderAMinoristaPocaCantidad(){
+        Date fechaVencimientoPepa = new Date(121,10,06);
+        Date fechaVencimientoOreo = new Date(121,11,06);
 
+		Cliente len= new Minorista("Len",20);
+		Cliente b= new Minorista("B",21);
+		Cliente k= new Mayorista("k",22);
+		
 
+        Distribuidora distribuidora = new Distribuidora("Distribuidora");
+        Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 100.0, fechaVencimientoPepa,100);
+        Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 100.0, fechaVencimientoOreo,100);
+        
+        distribuidora.agregarLote(pepa);
+        distribuidora.agregarLote(oreo);
+ 
 
+        distribuidora.agregarCLiente(len);
+        distribuidora.agregarCLiente(b);
+        distribuidora.agregarCLiente(k);
 
+        assertTrue(distribuidora.venderPocaCantidadDeUnProducto(100, len, 5));
+        assertTrue(distribuidora.venderPocaCantidadDeUnProducto(100,len, 3));
+        assertFalse(distribuidora.venderPocaCantidadDeUnProducto(100, k, 1));
+        
+        assertEquals(92, pepa.getCantidadDeProductosEnLaCaja(),0.1);
 
-
+    }
 
 
 
