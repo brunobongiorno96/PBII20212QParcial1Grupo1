@@ -1,9 +1,95 @@
 package clase;
 
-public class Empleado {
+public abstract class Empleado {
+	
+	private String nombre;
+	private final Integer cuil;
+	private Departamento departamento;
 
-//probando22
+	private final Double sueldoBase ;
 
- //hola chicos
+	private Double porcentajeSueldoExtra;
+	private Double porcentajeDescuento;
 
+	public double getPorcentajeDescuento() {
+		return porcentajeDescuento;
+	}
+
+	public void setPorcentajeDescuento(Double porcentajeDescuento) {
+		this.porcentajeDescuento = porcentajeDescuento;
+	}
+
+	public Empleado(String nombre, Integer cuil, Departamento departamento) {
+		super();
+		this.nombre = nombre;
+		this.cuil = cuil;
+		this.departamento = departamento;
+		this.sueldoBase = 40000.0;
+	}
+
+	public  Double calcularSueldo() {
+		Double sueldoFinal = 0.0;
+		sueldoFinal += getSueldoBase() + (getSueldoBase()*porcentajeSueldoExtra);
+		return sueldoFinal;	
+	}
+
+	public Double getPorcentajeExtraSueldo() {
+		return porcentajeSueldoExtra;
+	}
+
+	public void setPorcentajeExtraSueldo(Double porcentajeExtraSueldo) {
+		this.porcentajeSueldoExtra = porcentajeExtraSueldo;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Double getSueldoBase() {
+		return sueldoBase;
+	}
+
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Integer getCuil() {
+		return cuil;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cuil == null) ? 0 : cuil.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		if (cuil == null) {
+			if (other.cuil != null)
+				return false;
+		} else if (!cuil.equals(other.cuil))
+			return false;
+		return true;
+	}
+	
+	
+	
+	
+>>>>>>> 20ec244abaef26e29fd0fb1204b19ffb92c35aaf
 }
