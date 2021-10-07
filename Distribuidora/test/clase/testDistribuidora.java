@@ -26,13 +26,13 @@ public class testDistribuidora {
 		
 		Departamento nuevoDepto= new Departamento("finanzas");
 		Empleado nuevo= new Gerente("haziel",419284,nuevoDepto);
-		Empleado nuevo2= new Gerente("pablo",419284,nuevoDepto);
+		Empleado nuevo2= new Administrativo("haziel",419284,nuevoDepto);
 		Distribuidora nueva= new Distribuidora("Fargo");
 		
 		nueva.agregarEmpleado(nuevo);
 		
 		
-//retocar para que no agregue dos cuit iguales de diferentes puestos
+//metodo arreglado, era borrar el getClass en el equals generado en la clase empleado
 
 		
 		assertFalse(nueva.agregarEmpleado(nuevo2));
