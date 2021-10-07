@@ -63,9 +63,11 @@ public class testDistribuidora {
 	      distribuidora.agregarCLiente(len);
 	      distribuidora.agregarCLiente(k);
 	      
+	      					distribuidora.eliminarCliente(k);
 	      Boolean valorObt= distribuidora.eliminarCliente(len);
 	      
 	      assertTrue(valorObt); 
+	     
 	    }
 
 

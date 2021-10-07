@@ -27,11 +27,7 @@ public abstract class Empleado {
 		this.sueldoBase = 40000.0;
 	}
 
-	public  Double calcularSueldo() {
-		Double sueldoFinal = 0.0;
-		sueldoFinal += getSueldoBase() + (getSueldoBase()*porcentajeSueldoExtra);
-		return sueldoFinal;	
-	}
+	public abstract Double calcularSueldo();
 
 	public Double getPorcentajeExtraSueldo() {
 		return porcentajeSueldoExtra;
@@ -49,11 +45,6 @@ public abstract class Empleado {
 		this.departamento = departamento;
 	}
 
-	public Double getSueldoBase() {
-		return sueldoBase;
-	}
-
-	
 
 	public String getNombre() {
 		return nombre;
@@ -62,6 +53,14 @@ public abstract class Empleado {
 	public Integer getCuil() {
 		return cuil;
 	}
+
+	public Double getSueldoBase() {
+		return sueldoBase;
+	}
+//Otra Manera quitandole el "Final" al sueldoBase
+//	public void setSueldoBase(Double sueldoBase) {
+//		this.sueldoBase = sueldoBase;
+//	} 
 
 	@Override
 	public int hashCode() {

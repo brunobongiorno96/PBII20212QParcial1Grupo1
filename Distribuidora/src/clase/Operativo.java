@@ -8,5 +8,14 @@ public class Operativo extends Empleado{
 		setPorcentajeExtraSueldo(0.1);
 		setPorcentajeDescuento(0.05);
 	}
-	
+
+	@Override
+	public Double calcularSueldo() {
+		Double sueldoFinal = 0.0;
+		sueldoFinal += getSueldoBase() + (getSueldoBase()+super.getPorcentajeExtraSueldo());
+		return sueldoFinal;	
+		
+		//Otra manera quitandole el "final" a sueldoBase
+		//this.setSueldoBase(getSueldoBase()+getSueldoBase()+super.getPorcentajeExtraSueldo());
+}
 }
