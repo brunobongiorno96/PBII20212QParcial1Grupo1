@@ -155,6 +155,19 @@ public class Distribuidora {
 		}
 		return clienteBuscado;
 	}
+//	Dudo que lo usemos pero lo hice buscando vender a empleado un lote
+//	public Empleado buscarEmpleado(Integer cuil) {
+//		Empleado empleadoBuscado = null;
+//		for (int i = 0; i < empleados.length; i++) {
+//			if (empleados[i] != null) {
+//				if (empleados[i].getCuil().equals(cuil)) {
+//					empleadoBuscado = empleados[i];
+//					break;
+//				}
+//			}
+//		}
+//		return empleadoBuscado;
+//	}
 
 	public Boolean venderLote(Integer numeroLote, Integer cuilCliente) {
 		Boolean seVendio = false;
@@ -172,7 +185,25 @@ public class Distribuidora {
 		}
 		return seVendio;
 	}
-	
+//	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
+	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
+		Boolean seVendio = false;
+		if (this.comprobarSiExisteUnEmpleado(empleado)) {
+			for (int i = 0; i < productos.length; i++) {
+				if (productos[i] != null) {
+					if (productos[i].getnLote().equals(numeroLote)) {
+						productos[i].setPrecio(productos[i].getPrecio()*empleado.valorConDescuento());
+						agregarLoteVendido(productos[i]);
+						productos[i] = null;
+						seVendio = true;
+						break;
+					}
+				}
+			}
+		}
+		return seVendio;
+	}
+//	
 	public Boolean despedirEmpleado(Empleado empleado) {
 		Boolean seDespidio = false;
 		for (int i = 0; i < empleados.length; i++) {

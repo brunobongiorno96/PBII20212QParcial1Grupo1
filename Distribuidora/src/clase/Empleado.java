@@ -14,7 +14,6 @@ public abstract class Empleado {
 	public double getPorcentajeDescuento() {
 		return porcentajeDescuento;
 	}
-
 	public void setPorcentajeDescuento(Double porcentajeDescuento) {
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
@@ -28,6 +27,8 @@ public abstract class Empleado {
 	}
 
 	public abstract Double calcularSueldo();
+	
+	public abstract Double valorConDescuento();
 
 	public Double getPorcentajeExtraSueldo() {
 		return porcentajeSueldoExtra;

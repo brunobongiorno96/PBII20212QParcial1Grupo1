@@ -20,4 +20,11 @@ public class Gerente  extends Empleado{
 		//this.setSueldoBase(getSueldoBase()+getSueldoBase()+super.getPorcentajeExtraSueldo());
 }
 
+	@Override
+	public Double valorConDescuento() {
+		Double valorTotal=0.0;
+		valorTotal=1.0-this.getPorcentajeDescuento();
+		return valorTotal;
+	}
+
 }
