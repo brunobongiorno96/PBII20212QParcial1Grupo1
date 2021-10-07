@@ -10,5 +10,11 @@ public class Administrativo  extends Empleado{
 	
 	}
 
+	@Override
+	public Double calcularSueldo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

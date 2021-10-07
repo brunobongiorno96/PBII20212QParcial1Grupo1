@@ -8,5 +8,11 @@ public class Operativo extends Empleado{
 		setPorcentajeExtraSueldo(0.1);
 		setPorcentajeDescuento(0.05);
 	}
+
+	@Override
+	public Double calcularSueldo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

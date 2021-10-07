@@ -27,11 +27,7 @@ public abstract class Empleado {
 		this.sueldoBase = 40000.0;
 	}
 
-	public  Double calcularSueldo() {
-		Double sueldoFinal = 0.0;
-		sueldoFinal += getSueldoBase() + (getSueldoBase()*porcentajeSueldoExtra);
-		return sueldoFinal;	
-	}
+	abstract public  Double calcularSueldo();
 
 	public Double getPorcentajeExtraSueldo() {
 		return porcentajeSueldoExtra;
