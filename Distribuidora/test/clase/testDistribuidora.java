@@ -53,6 +53,45 @@ public class testDistribuidora {
 		
 		assertEquals(valorEsperado, listaDeEmpleadosDespedidos[0].getNombre());
 	}
+	
+	 @Test
+	 public void queSePuedaEliminarUnCliente(){
+	      Distribuidora distribuidora = new Distribuidora("NombreDistri");
+	      Cliente len = new Cliente("Len", 22);
+	      Cliente k = new Cliente("K", 19);
+	      
+	      distribuidora.agregarCLiente(len);
+	      distribuidora.agregarCLiente(k);
+	      
+	      					distribuidora.eliminarCliente(k);
+	      Boolean valorObt= distribuidora.eliminarCliente(len);
+	      
+	      assertTrue(valorObt); 
+	     
+	    }
+	 @Test
+		public void queSePuedaCalcularSueldoDeEmpleados() {
+			Departamento departamento= new Departamento("DepartamentoNombre");
+			Empleado len= new Gerente("Len",20,departamento);
+			Empleado k= new Administrativo("K",19,departamento);
+			Empleado u= new Operativo("U",11,departamento);
+			
+			Distribuidora nueva= new Distribuidora("Wawa");
+			
+			nueva.agregarEmpleado(len);
+			nueva.agregarEmpleado(k);
+			nueva.agregarEmpleado(u);
+
+			Double sueldoEsperadoLen= len.getSueldoBase()+4000.0;
+			Double sueldoEsperadoK= k.getSueldoBase()+(k.getSueldoBase()*0.05);
+			Double sueldoEsperadoU= u.getSueldoBase()+(u.getSueldoBase()*0.1);
+			
+			assertEquals(sueldoEsperadoLen, len.calcularSueldo(), 0.01);
+			assertEquals(sueldoEsperadoK, k.calcularSueldo(), 0.01);
+			assertEquals(sueldoEsperadoU, u.calcularSueldo(), 0.01);
+			
+		}
+
 
 
 
