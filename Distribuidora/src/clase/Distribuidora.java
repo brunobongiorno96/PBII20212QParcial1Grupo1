@@ -185,6 +185,39 @@ public class Distribuidora {
 		}
 		return seVendio;
 	}
+//Tengo q seguirlo y hacer test si funciona, Len	
+	public Boolean venderPocaCantidadDeUnProducto(Integer numeroLote, Cliente cliente, Integer cantProductoAComprar) {
+		Boolean seVendio = false;
+		for (int i = 0; i < clientes.length; i++) {
+			if(clientes[i]!=null)
+			//	if(clientes[i].equals(cliente)&&cliente.isMayorista()==false)
+				if(verificarMinorista(cliente)) //Si es minorista, sigue
+		
+			for (int j = 0; j < productos.length; j++) {
+				if (productos[j] != null) {
+					if (productos[j].getnLote().equals(numeroLote)) {
+						if(productos[j].getCantidadDeProductosEnLaCaja()>=1) //verifica que haya mas de 1 solo producto en el lote
+						productos[j].setCantidadDeProductosEnLaCaja(productos[j].getCantidadDeProductosEnLaCaja()-cantProductoAComprar);;
+						seVendio = true;
+						break;
+						}
+					}
+				}
+			}
+		return seVendio;
+	}
+	
+	public Boolean verificarMinorista(Cliente cliente) {
+		Boolean esMinorista=false;
+		for (int i = 0; i < clientes.length; i++) {
+			if(clientes[i]!=null)
+				if(clientes[i].equals(cliente))
+					if(clientes[i].isMayorista()==false)
+						esMinorista=true;
+						break;
+		}return esMinorista;
+	}
+	
 //	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;

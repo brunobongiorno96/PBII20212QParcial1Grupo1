@@ -4,10 +4,12 @@ public class Cliente {
 
     private String nombre;
     private Integer cuil;
+	private boolean mayorista;
 
     public Cliente(String nombre,Integer cuil) {
         this.nombre = nombre;
         this.cuil= cuil;
+        this.mayorista=false;;
     }
 
     public String getNombre() {
@@ -25,6 +27,15 @@ public class Cliente {
     public void setCuil(Integer cuil) {
         this.cuil = cuil;
     }
+    
+
+	public boolean isMayorista() {
+		return mayorista;
+	}
+
+	public void setMayorista(boolean mayorista) {
+		this.mayorista = mayorista;
+	}
 
 	@Override
 	public int hashCode() {

@@ -161,8 +161,7 @@ public class ProductoTest {
         
         Producto [] listaObtenida = distribuidora.getProductosVendidos();
         Producto [] listaObtenida2 = distribuidora.getProductos();
-        
-        
+            
         Double precioEsperadoLen= 100*0.85;
         Double precioEsperadoK= 100*0.9;
         Double precioEsperadoU= 100*0.95;
@@ -170,8 +169,7 @@ public class ProductoTest {
         assertEquals(precioEsperadoLen,listaObtenida[0].getPrecio());
 //        assertEquals(precioEsperadoK,listaObtenida[1].getPrecio());
 //        assertEquals(precioEsperadoU,listaObtenida[2].getPrecio());
-//        
-//        
+      
         assertNull(listaObtenida2[0]);
 
     }
