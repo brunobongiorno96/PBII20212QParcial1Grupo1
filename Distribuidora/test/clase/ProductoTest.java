@@ -9,27 +9,25 @@ public class ProductoTest {
 	@Test
 	public void queSePuedaAgregarUnLote() {
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Date fechaVencimiento = new Date(121, 10, 06);
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 1000.0, fechaVencimiento, 100);
+		Producto pepa = new Producto("Pepa", 100, 1000.0, 100);
 
 		distribuidora.agregarLote(pepa);
 
 		String NOMBRE_ESPERA = "Pepa";
 		Integer NLOTE_ESPERADO = 100;
-		TipoApto aptoCeliaco = TipoApto.APTO_CELIACO;
+		
 		assertEquals(NOMBRE_ESPERA, pepa.getNombre());
 		assertEquals(NLOTE_ESPERADO, pepa.getnLote());
-		assertEquals(aptoCeliaco, pepa.getTipoApto());
+		
 
 	}
 
 	@Test
 	public void queSePuedaBuscarUnLotePorSuNumero() {
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Date fechaVencimientoPepa = new Date(121, 10, 06);
-		Date fechaVencimientoOreo = new Date(121, 11, 06);
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 1000.0, fechaVencimientoPepa, 100);
-		Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 1500.0, fechaVencimientoOreo, 200);
+	
+		Producto pepa = new Producto("Pepa", 100, 1000.0, 100);
+		Producto oreo = new Producto("Oreo", 101, 1500.0, 200);
 
 		distribuidora.agregarLote(pepa);
 		distribuidora.agregarLote(oreo);
@@ -44,12 +42,11 @@ public class ProductoTest {
 
 	@Test
 	public void queSePuedaAgregarUnLoteAlArrayDeLotesVendidos() {
-		Date fechaVencimientoPepa = new Date(121, 10, 06);
-		Date fechaVencimientoOreo = new Date(121, 11, 06);
+	
 
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 1000.0, fechaVencimientoPepa, 100);
-		Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 1500.0, fechaVencimientoOreo, 200);
+		Producto pepa = new Producto("Pepa", 100, 1000.0, 100);
+		Producto oreo = new Producto("Oreo", 101, 1500.0, 200);
 
 		distribuidora.agregarLote(pepa);
 		distribuidora.agregarLote(oreo);
@@ -64,14 +61,13 @@ public class ProductoTest {
 
 	@Test
 	public void queSePuedaVenderUnLote() {
-		Date fechaVencimientoPepa = new Date(121, 10, 06);
-		Date fechaVencimientoOreo = new Date(121, 11, 06);
+		
 
 		Cliente pablo = new Cliente("Pablo", 20);
 
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 1000.0, fechaVencimientoPepa, 100);
-		Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 1500.0, fechaVencimientoOreo, 200);
+		Producto pepa = new Producto("Pepa", 100, 1000.0, 100);
+		Producto oreo = new Producto("Oreo", 101, 1500.0, 200);
 
 		distribuidora.agregarLote(pepa);
 		distribuidora.agregarLote(oreo);
@@ -91,8 +87,7 @@ public class ProductoTest {
 
 	@Test
 	public void queSePuedaVenderUnLoteAEmpleadoConDescuento() {
-		Date fechaVencimientoPepa = new Date(121, 10, 06);
-		Date fechaVencimientoOreo = new Date(121, 11, 06);
+
 
 		Departamento departamento = new Departamento("DepartamentoNombre");
 		Empleado len = new Gerente("Len", 20, departamento);
@@ -100,9 +95,9 @@ public class ProductoTest {
 		Empleado u = new Operativo("U", 11, departamento);
 
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 100.0, fechaVencimientoPepa, 100);
-		Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 100.0, fechaVencimientoOreo, 200);
-		Producto rueditas = new Producto("Rueditas", 102, TipoApto.APTO_CELIACO, 100.0, fechaVencimientoPepa, 300);
+		Producto pepa = new Producto("Pepa", 100, 100.0, 100);
+		Producto oreo = new Producto("Oreo", 101, 100.0, 200);
+		Producto rueditas = new Producto("Rueditas", 102, 100.0, 300);
 
 		distribuidora.agregarLote(pepa);
 		distribuidora.agregarLote(oreo);
@@ -133,16 +128,14 @@ public class ProductoTest {
 
 	@Test
 	public void queSePuedaVenderAMinoristaPocaCantidad() {
-		Date fechaVencimientoPepa = new Date(121, 10, 06);
-		Date fechaVencimientoOreo = new Date(121, 11, 06);
-
+	
 		Minorista len = new Minorista("Len", 20);
 		Minorista b = new Minorista("B", 21);
 		Mayorista c = new Mayorista("C", 22);
 
 		Distribuidora distribuidora = new Distribuidora("Distribuidora");
-		Producto pepa = new Producto("Pepa", 100, TipoApto.APTO_CELIACO, 100.0, fechaVencimientoPepa, 100);
-		Producto oreo = new Producto("Oreo", 101, TipoApto.APTO_DIABETICO, 100.0, fechaVencimientoOreo, 100);
+		Producto pepa = new Producto("Pepa", 100, 100.0, 100);
+		Producto oreo = new Producto("Oreo", 101, 100.0, 100);
 
 		distribuidora.agregarLote(pepa);
 		distribuidora.agregarLote(oreo);
