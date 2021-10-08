@@ -42,6 +42,7 @@ public class Cliente {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cuil == null) ? 0 : cuil.hashCode());
+		result = prime * result + (mayorista ? 1231 : 1237);
 		return result;
 	}
 
@@ -51,6 +52,7 @@ public class Cliente {
 			return true;
 		if (obj == null)
 			return false;
+// Lo comento para que no compare si las clases son distintas
 //		if (getClass() != obj.getClass())
 //			return false;
 		Cliente other = (Cliente) obj;
@@ -58,6 +60,8 @@ public class Cliente {
 			if (other.cuil != null)
 				return false;
 		} else if (!cuil.equals(other.cuil))
+			return false;
+		if (mayorista != other.mayorista)
 			return false;
 		return true;
 	}
