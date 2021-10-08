@@ -70,4 +70,15 @@ public class Producto {
     public int hashCode() {
         return Objects.hash(nombre, nLote);
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", nLote=" + nLote +
+                ", tipoApto=" + tipoApto +
+                ", precio=" + precio +
+                ", cantidadDeProductosEnLaCaja=" + cantidadDeProductosEnLaCaja +
+                '}';
+    }
 }
