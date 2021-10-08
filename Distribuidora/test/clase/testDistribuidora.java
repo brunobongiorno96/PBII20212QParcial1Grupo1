@@ -10,32 +10,39 @@ public class testDistribuidora {
 	public void queSePuedaAgregarUnEmpleado() {
 		Departamento nuevoDepto= new Departamento("finanzas");
 		Empleado nuevo= new Gerente("haziel",419284,nuevoDepto);
+		Empleado nuevo2= new Gerente("bruno",419285,nuevoDepto);
 		Distribuidora nueva= new Distribuidora("Fargo");
 		
 		nueva.agregarEmpleado(nuevo);
+		nueva.agregarEmpleado(nuevo2);
 		
 		
 		Empleado[] listaDeEmpleados= nueva.getEmpleados();
-		String valorEsperado= "haziel";
+		String valorEsperado= "bruno";
 		
-		assertEquals(valorEsperado, listaDeEmpleados[0].getNombre());
+		assertEquals(valorEsperado, listaDeEmpleados[1].getNombre());
+		
 	}
 
 	@Test
-	public void queSeNoPuedaAgregarUnEmpleadoRepetido() {
+	public void queNosePuedaAgregarUnEmpleadoRepetido() {
 		
 		Departamento nuevoDepto= new Departamento("finanzas");
 		Empleado nuevo= new Gerente("haziel",419284,nuevoDepto);
-		Empleado nuevo2= new Administrativo("haziel",419284,nuevoDepto);
+		Empleado nuevo2= new Administrativo("haziel",419285,nuevoDepto);
 		Distribuidora nueva= new Distribuidora("Fargo");
 		
 		nueva.agregarEmpleado(nuevo);
+		nueva.agregarEmpleado(nuevo2);
+		Integer valorEsperado= 419285;
+		Empleado[] listaDeEmpleados = nueva.getEmpleados();
+		
 		
 		
 //metodo arreglado, era borrar el getClass en el equals generado en la clase empleado
 
+		assertEquals(valorEsperado,listaDeEmpleados[1].getCuil());
 		
-		assertFalse(nueva.agregarEmpleado(nuevo2));
 		
 		
 	}

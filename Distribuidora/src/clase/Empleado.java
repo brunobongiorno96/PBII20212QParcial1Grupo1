@@ -3,7 +3,7 @@ package clase;
 public abstract class Empleado {
 	
 	private String nombre;
-	private final Integer cuil;
+	private  final Integer cuil;
 	private Departamento departamento;
 
 	private final Double sueldoBase ;

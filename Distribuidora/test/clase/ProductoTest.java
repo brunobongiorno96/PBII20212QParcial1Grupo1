@@ -156,8 +156,8 @@ public class ProductoTest {
         distribuidora.agregarEmpleado(u);
 
         assertTrue(distribuidora.venderLoteAEmpleado(100, len));
-//        assertTrue(distribuidora.venderLoteAEmpleado(102, k));
-//        assertTrue(distribuidora.venderLoteAEmpleado(101, u));
+        assertTrue(distribuidora.venderLoteAEmpleado(102, k));
+       //assertTrue(distribuidora.venderLoteAEmpleado(101, u));
         
         Producto [] listaObtenida = distribuidora.getProductosVendidos();
         Producto [] listaObtenida2 = distribuidora.getProductos();
@@ -167,8 +167,8 @@ public class ProductoTest {
         Double precioEsperadoU= 100*0.95;
 
         assertEquals(precioEsperadoLen,listaObtenida[0].getPrecio());
-//        assertEquals(precioEsperadoK,listaObtenida[1].getPrecio());
-//        assertEquals(precioEsperadoU,listaObtenida[2].getPrecio());
+        assertEquals(precioEsperadoK,listaObtenida[1].getPrecio());
+        assertEquals(precioEsperadoU,listaObtenida[2].getPrecio());
       
         assertNull(listaObtenida2[0]);
 

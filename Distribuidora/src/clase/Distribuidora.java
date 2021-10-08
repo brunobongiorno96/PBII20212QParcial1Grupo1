@@ -89,35 +89,41 @@ public class Distribuidora {
 		}
 		return seAgrego;
 	}
-	
+
 	public Boolean eliminarCliente(Cliente cliente) {
-		Boolean seElimino=false;
+		Boolean seElimino = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if(clientes[i]!=null)
-				if(clientes[i].getCuil().equals(cliente.getCuil())) {
-					clientes[i]=null;
-					seElimino=true;
+			if (clientes[i] != null) {
+				if (clientes[i].getCuil().equals(cliente.getCuil())) {
+					clientes[i] = null;
+					seElimino = true;
 					break;
 				}
-		}return seElimino;
+		}
+		}
+		return seElimino;
 	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {
 
 		Boolean seAgrego = false;
 
-		if (!(comprobarSiExisteUnEmpleado(empleado)))
+		if (this.comprobarSiExisteUnEmpleado(empleado).equals(Boolean.FALSE)) {
 			for (int i = 0; i < empleados.length; i++) {
-				if (empleados[i] == null)
+				if (empleados[i] == null) {
+
 					empleados[i] = empleado;
 
-				seAgrego = true;
-				break;
+					seAgrego = true;
+					break;
+				}
 			}
-		return seAgrego;
 
+			
+		}
+		return seAgrego;
 	}
-	
+
 	public Boolean agregarEmpleadoDespedido(Empleado empleado) {
 		Boolean seAgrego = false;
 		for (int i = 0; i < empleadosDespedidos.length; i++) {
@@ -129,7 +135,7 @@ public class Distribuidora {
 		}
 		return seAgrego;
 	}
-	
+
 	public Producto buscarLote(Integer numeroLote) {
 		Producto loteBuscado = null;
 		for (int i = 0; i < productos.length; i++) {
@@ -155,19 +161,20 @@ public class Distribuidora {
 		}
 		return clienteBuscado;
 	}
-//	Dudo que lo usemos pero lo hice buscando vender a empleado un lote
-//	public Empleado buscarEmpleado(Integer cuil) {
-//		Empleado empleadoBuscado = null;
-//		for (int i = 0; i < empleados.length; i++) {
-//			if (empleados[i] != null) {
-//				if (empleados[i].getCuil().equals(cuil)) {
-//					empleadoBuscado = empleados[i];
-//					break;
-//				}
-//			}
-//		}
-//		return empleadoBuscado;
-//	}
+
+	// Dudo que lo usemos pero lo hice buscando vender a empleado un lote
+	public Empleado buscarEmpleado(Integer cuil) {
+		Empleado empleadoBuscado = null;
+		for (int i = 0; i < empleados.length; i++) {
+			if (empleados[i] != null) {
+				if (empleados[i].getCuil().equals(cuil)) {
+					empleadoBuscado = empleados[i];
+					break;
+				}
+			}
+		}
+		return empleadoBuscado;
+	}
 
 	public Boolean venderLote(Integer numeroLote, Integer cuilCliente) {
 		Boolean seVendio = false;
@@ -185,47 +192,52 @@ public class Distribuidora {
 		}
 		return seVendio;
 	}
+
 //Tengo q seguirlo y hacer test si funciona, Len	
 	public Boolean venderPocaCantidadDeUnProducto(Integer numeroLote, Cliente cliente, Integer cantProductoAComprar) {
 		Boolean seVendio = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if(clientes[i]!=null)
-			//	if(clientes[i].equals(cliente)&&cliente.isMayorista()==false)
-				if(verificarMinorista(cliente)) //Si es minorista, sigue
-		
-			for (int j = 0; j < productos.length; j++) {
-				if (productos[j] != null) {
-					if (productos[j].getnLote().equals(numeroLote)) {
-						if(productos[j].getCantidadDeProductosEnLaCaja()>=1) //verifica que haya mas de 1 solo producto en el lote
-						productos[j].setCantidadDeProductosEnLaCaja(productos[j].getCantidadDeProductosEnLaCaja()-cantProductoAComprar);;
-						seVendio = true;
-						break;
+			if (clientes[i] != null)
+				// if(clientes[i].equals(cliente)&&cliente.isMayorista()==false)
+				if (verificarMinorista(cliente)) // Si es minorista, sigue
+
+					for (int j = 0; j < productos.length; j++) {
+						if (productos[j] != null) {
+							if (productos[j].getnLote().equals(numeroLote)) {
+								if (productos[j].getCantidadDeProductosEnLaCaja() >= 1) // verifica que haya mas de 1
+																						// solo producto en el lote
+									productos[j].setCantidadDeProductosEnLaCaja(
+											productos[j].getCantidadDeProductosEnLaCaja() - cantProductoAComprar);
+								;
+								seVendio = true;
+								break;
+							}
 						}
 					}
-				}
-			}
+		}
 		return seVendio;
 	}
-	
+
 	public Boolean verificarMinorista(Cliente cliente) {
-		Boolean esMinorista=false;
+		Boolean esMinorista = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if(clientes[i]!=null)
-				if(clientes[i].equals(cliente))
-					if(clientes[i].isMayorista()==false)
-						esMinorista=true;
-						break;
-		}return esMinorista;
+			if (clientes[i] != null)
+				if (clientes[i].equals(cliente))
+					if (clientes[i].isMayorista() == false)
+						esMinorista = true;
+			break;
+		}
+		return esMinorista;
 	}
-	
+
 //	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;
-		if (this.comprobarSiExisteUnEmpleado(empleado)) {
+		if (this.buscarEmpleado(empleado.getCuil()) != null) {
 			for (int i = 0; i < productos.length; i++) {
 				if (productos[i] != null) {
 					if (productos[i].getnLote().equals(numeroLote)) {
-						productos[i].setPrecio(productos[i].getPrecio()*empleado.valorConDescuento());
+						productos[i].setPrecio(productos[i].getPrecio() * empleado.valorConDescuento());
 						agregarLoteVendido(productos[i]);
 						productos[i] = null;
 						seVendio = true;
@@ -236,6 +248,7 @@ public class Distribuidora {
 		}
 		return seVendio;
 	}
+
 //	
 	public Boolean despedirEmpleado(Empleado empleado) {
 		Boolean seDespidio = false;
@@ -252,6 +265,7 @@ public class Distribuidora {
 		}
 		return seDespidio;
 	}
+
 	public Boolean agregarLoteVendido(Producto lote) {
 		Boolean seAgrego = false;
 		for (int i = 0; i < productosVendidos.length; i++) {
@@ -269,27 +283,21 @@ public class Distribuidora {
 
 	}
 
-	
-
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
 		Boolean existe = false;
 
 		for (int i = 0; i < empleados.length; i++) {
-			if (empleados[i] != null)
+			if (empleados[i] != null) {
 				if (empleados[i].equals(empleado))
 
 					existe = true;
+			break;
 
 		}
+		
+		}
 		return existe;
-
 	}
-
-	
-
-	
-
-	
 
 }
