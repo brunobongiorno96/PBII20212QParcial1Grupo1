@@ -1,12 +1,12 @@
 package clase;
 
 public abstract class Empleado {
-	
+
 	private String nombre;
 	private final Integer cuil;
 	private Departamento departamento;
 
-	private final Double sueldoBase ;
+	private final Double sueldoBase;
 
 	private Double porcentajeSueldoExtra;
 	private Double porcentajeDescuento;
@@ -27,7 +27,9 @@ public abstract class Empleado {
 		this.sueldoBase = 40000.0;
 	}
 
-	abstract public  Double calcularSueldo();
+	abstract public Double calcularSueldo();
+
+	abstract public Double valorConDescuento();
 
 	public Double getPorcentajeExtraSueldo() {
 		return porcentajeSueldoExtra;
@@ -45,12 +47,6 @@ public abstract class Empleado {
 		this.departamento = departamento;
 	}
 
-	public Double getSueldoBase() {
-		return sueldoBase;
-	}
-
-	
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -58,6 +54,14 @@ public abstract class Empleado {
 	public Integer getCuil() {
 		return cuil;
 	}
+
+	public Double getSueldoBase() {
+		return sueldoBase;
+	}
+//Otra Manera quitandole el "Final" al sueldoBase
+//	public void setSueldoBase(Double sueldoBase) {
+//		this.sueldoBase = sueldoBase;
+//	} 
 
 	@Override
 	public int hashCode() {
@@ -73,8 +77,9 @@ public abstract class Empleado {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+// Lo comento para que no compare si las clases son distintas
+//		if (getClass() != obj.getClass())
+//			return false;
 		Empleado other = (Empleado) obj;
 		if (cuil == null) {
 			if (other.cuil != null)
@@ -83,8 +88,4 @@ public abstract class Empleado {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 }
