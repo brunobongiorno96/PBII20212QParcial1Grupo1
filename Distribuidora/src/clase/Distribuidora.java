@@ -299,11 +299,11 @@ public class Distribuidora {
 
 		for (int i = 0; i < empleados.length; i++) {
 			if (empleados[i] != null) {
-				if (empleados[i].equals(empleado))
+				if (empleados[i].equals(empleado)) {
 
 					existe = true;
 				break;
-
+				}
 			}
 
 		}
