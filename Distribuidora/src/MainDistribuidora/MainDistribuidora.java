@@ -17,9 +17,10 @@ public class MainDistribuidora {
     static final int VOLVER_ATRAS = 9;
 
     static final int SALIR = 0;
-    static final int GESTIONAR_PRODUCTOS = 1;
-    static final int GESTIONAR_EMPLEADOS = 2;
-    static final int GESTIONAR_CLIENTES = 3;
+    static final int GESTIONAR_CLIENTES = 1;
+    static final int GESTIONAR_PRODUCTOS = 2;
+    static final int GESTIONAR_EMPLEADOS = 3;
+    
 
     static final int REGISTRAR_LOTE = 1;
     static final int VENDER_LOTE = 2;
@@ -466,7 +467,7 @@ public class MainDistribuidora {
 
                 case VENDER_LOTE:
                     venderLote(distribuidora);
-
+                    break;
                 case BUSCAR_LOTE:
                     buscarLote(distribuidora);
                     break;
@@ -694,9 +695,9 @@ public class MainDistribuidora {
         int opcionDeseada;
         System.out.println("************************");
         System.out.println("Menu de opciones");
-        System.out.println("1 - Para gestionar Productos");
-        System.out.println("2 - Para gestionar Empleados");
-        System.out.println("3 - Para gestionar Clientes");
+        System.out.println("1 - Para gestionar Clientes");
+        System.out.println("2 - Para gestionar Productos");
+        System.out.println("3 - Para gestionar Empleados");
         System.out.println("0 - Salir");
         System.out.println("************************");
         System.out.println("Ingrese una opcion");
