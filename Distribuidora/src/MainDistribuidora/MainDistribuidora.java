@@ -363,7 +363,7 @@ public class MainDistribuidora {
         Empleado empleadoAdministrativo = new Administrativo(nombre, cuil, administrativo);
         Boolean seAgregoAdministrativo = distribuidora.agregarEmpleado(empleadoAdministrativo);
         if (seAgregoAdministrativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + administrativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + administrativo.getNombre());
         }
     }
 
@@ -371,7 +371,7 @@ public class MainDistribuidora {
         Empleado AdministrativoFinanzas = new Administrativo(nombre, cuil, finanza);
         Boolean seAgregoFinanzas = distribuidora.agregarEmpleado(AdministrativoFinanzas);
         if (seAgregoFinanzas == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + finanza.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + finanza.getNombre());
         }
     }
 
@@ -421,7 +421,7 @@ public class MainDistribuidora {
         Empleado gerenteAdministrativo = new Gerente(nombre, cuil, operativo);
         Boolean seAgregoOperativo = distribuidora.agregarEmpleado(gerenteAdministrativo);
         if (seAgregoOperativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + operativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + operativo.getNombre());
         }
     }
 
@@ -429,7 +429,7 @@ public class MainDistribuidora {
         Empleado gerenteAdministrativo = new Gerente(nombre, cuil, administrativo);
         Boolean seAgregoAdministrativo = distribuidora.agregarEmpleado(gerenteAdministrativo);
         if (seAgregoAdministrativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + administrativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + administrativo.getNombre());
         }
     }
 
@@ -437,7 +437,7 @@ public class MainDistribuidora {
         Empleado gerenteFinanzas = new Gerente(nombre, cuil, finanza);
         Boolean seAgregoFinanzas = distribuidora.agregarEmpleado(gerenteFinanzas);
         if (seAgregoFinanzas == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + finanza.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + finanza.getNombre());
         }
     }
 
