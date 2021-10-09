@@ -10,15 +10,14 @@ public class Producto {
    private Integer nLote;
    private TipoApto tipoApto;
    private Double precio;
-   private Date fechaVencimiento;
+
    private Integer cantidadDeProductosEnLaCaja;
 
-    public Producto(String nombre, Integer nLote, TipoApto tipoApto, Double precio, Date fechaVencimiento, Integer cantidadDeProductosEnLaCaja) {
+    public Producto(String nombre, Integer nLote, Double precio, Integer cantidadDeProductosEnLaCaja) {
         this.nombre = nombre;
         this.nLote = nLote;
-        this.tipoApto = tipoApto;
         this.precio = precio;
-        this.fechaVencimiento = fechaVencimiento;
+
         this.cantidadDeProductosEnLaCaja = cantidadDeProductosEnLaCaja;
     }
 
@@ -46,13 +45,6 @@ public class Producto {
         this.nLote = nLote;
     }
 
-    public TipoApto getTipoApto() {
-        return tipoApto;
-    }
-
-    public void setTipoApto(TipoApto tipoApto) {
-        this.tipoApto = tipoApto;
-    }
 
     public Double getPrecio() {
         return precio;
@@ -62,20 +54,9 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
 
-    public String formatearFecha(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaFormateada = sdf.format(fechaVencimiento);
-        return fechaFormateada;
 
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,5 +69,16 @@ public class Producto {
     @Override
     public int hashCode() {
         return Objects.hash(nombre, nLote);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", nLote=" + nLote +
+                ", tipoApto=" + tipoApto +
+                ", precio=" + precio +
+                ", cantidadDeProductosEnLaCaja=" + cantidadDeProductosEnLaCaja +
+                '}';
     }
 }

@@ -1,12 +1,12 @@
 package clase;
 
 public abstract class Empleado {
-	
+
 	private String nombre;
-	private  final Integer cuil;
+	private final Integer cuil;
 	private Departamento departamento;
 
-	private final Double sueldoBase ;
+	private final Double sueldoBase;
 
 	private Double porcentajeSueldoExtra;
 	private Double porcentajeDescuento;
@@ -14,6 +14,7 @@ public abstract class Empleado {
 	public double getPorcentajeDescuento() {
 		return porcentajeDescuento;
 	}
+
 	public void setPorcentajeDescuento(Double porcentajeDescuento) {
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
@@ -26,9 +27,9 @@ public abstract class Empleado {
 		this.sueldoBase = 40000.0;
 	}
 
-	public abstract Double calcularSueldo();
-	
-	public abstract Double valorConDescuento();
+	abstract public Double calcularSueldo();
+
+	abstract public Double valorConDescuento();
 
 	public Double getPorcentajeExtraSueldo() {
 		return porcentajeSueldoExtra;
@@ -45,7 +46,6 @@ public abstract class Empleado {
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
-
 
 	public String getNombre() {
 		return nombre;
@@ -77,8 +77,11 @@ public abstract class Empleado {
 			return true;
 		if (obj == null)
 			return false;
-		/*if (getClass() != obj.getClass())
-			return false;*/
+
+// Lo comento para que no compare si las clases son distintas
+//		if (getClass() != obj.getClass())
+//			return false;
+
 		Empleado other = (Empleado) obj;
 		if (cuil == null) {
 			if (other.cuil != null)
@@ -86,5 +89,12 @@ public abstract class Empleado {
 		} else if (!cuil.equals(other.cuil))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado{" + "nombre='" + nombre + '\'' + ", cuil=" + cuil + ", departamento=" + departamento
+				+ ", sueldoBase=" + sueldoBase + ", porcentajeSueldoExtra=" + porcentajeSueldoExtra
+				+ ", porcentajeDescuento=" + porcentajeDescuento + '}';
 	}
 }
