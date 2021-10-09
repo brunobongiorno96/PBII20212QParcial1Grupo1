@@ -334,4 +334,14 @@ public class Distribuidora {
 		return existe;
 
 	}
+	
+	public Double calcularSueldoTotalDeEmpleados() {
+        Double sueldoTotal= 0.0;
+        for (int i = 0; i < empleados.length; i++) {
+            if(empleados[i]!=null) {
+                sueldoTotal+=empleados[i].calcularSueldo();
+            }
+        }
+        return sueldoTotal;
+    }
 }
