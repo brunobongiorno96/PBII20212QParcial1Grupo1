@@ -119,9 +119,13 @@ public class MainDistribuidora {
     private static void mostrarClientes(Distribuidora distribuidora) {
         Cliente [] clientesEncontrados = distribuidora.clientes();
         if (clientesEncontrados != null){
-            System.out.println(clientesEncontrados);
-        }else {
-            System.out.println("No hay clientes ");
+            for (int i = 0; i < clientesEncontrados.length; i++) {
+                if (clientesEncontrados[i] != null) {
+                    System.out.println(clientesEncontrados[i].toString());
+                }
+            }
+        } else {
+            System.out.println("No se encontraron empleados");
         }
     }
 
@@ -236,18 +240,26 @@ public class MainDistribuidora {
     private static void mostrarEmpleadosDespedidos(Distribuidora distribuidora) {
         Empleado [] empleadosDespedidos = distribuidora.empleadosDespedidos();
         if (empleadosDespedidos!= null){
-            System.out.println(empleadosDespedidos);
-        }else{
-            System.out.println("No se encontraron empleados despedidos");
+            for (int i = 0; i < empleadosDespedidos.length; i++) {
+                if (empleadosDespedidos[i] != null) {
+                    System.out.println(empleadosDespedidos[i].toString());
+                }
+            }
+        } else {
+            System.out.println("No se encontraron empleados");
         }
     }
 
     private static void mostrarEmpleados(Distribuidora distribuidora) {
-        Empleado [] contratados = distribuidora.empleadosContratados();
-        if (contratados != null){
-        System.out.println(contratados);
-        }else {
-            System.out.println("No se encontraron empleados");
+        Empleado[] contratados = distribuidora.empleadosContratados();
+        if (contratados != null) {
+            for (int i = 0; i < contratados.length; i++) {
+                if (contratados[i] != null) {
+                    System.out.println(contratados[i].toString());
+                }
+            }
+        } else {
+            System.out.println("No se encontraron empleados despedidos");
         }
     }
 
@@ -270,6 +282,7 @@ public class MainDistribuidora {
         Empleado seBusco = distribuidora.buscarEmpleado(cuil);
         if (seBusco !=null){
             distribuidora.despedirEmpleado(seBusco);
+            System.out.println("Se pudo eliminar correctamente el empleado");
         }else{
             System.out.println("No se encuentra el empleado");
         }
@@ -293,6 +306,8 @@ public class MainDistribuidora {
 
                     registrarOperario(distribuidora, operativo);
 
+                    break;
+                case VOLVER_ATRAS:
                     break;
 
             }
@@ -324,7 +339,7 @@ public class MainDistribuidora {
         System.out.println("Ingrese el cuil");
         cuil  = teclado.nextInt();
 
-       // do {
+       do {
             System.out.println("Ingrese el departamento al cual quiere enviarlo");
             System.out.println("1- Departamento de finanzas");
             System.out.println("2- Departamento administrativo ");
@@ -338,9 +353,12 @@ public class MainDistribuidora {
                     agregarAdministrativo(distribuidora, administrativo);
                     break;
 
+                case VOLVER_ATRAS:
+                    break;
+
             }
 
-       // }while( opcionDeseada !=VOLVER_ATRAS);
+        }while( opcionDeseada !=VOLVER_ATRAS);
     }
 
     private static void agregarAdministrativo(Distribuidora distribuidora, Departamento administrativo) {
@@ -490,10 +508,13 @@ public class MainDistribuidora {
     private static void buscarLotesVendidos(Distribuidora distribuidora) {
         Producto [] encontrados =  distribuidora.lotesVendidos();
         if (encontrados != null){
-            System.out.println("Se encontraron los siguientes lotes vendidos");
-            System.out.println(encontrados);
-        }else{
-            System.out.println("No hay lotes vendidos");
+            for (int i = 0; i < encontrados.length; i++) {
+                if (encontrados[i] != null) {
+                    System.out.println(encontrados[i].toString());
+                }
+            }
+        } else{
+            System.out.println("No se encontraron productos vendidos");
         }
     }
 
