@@ -174,10 +174,10 @@ public class Distribuidora {
 		return empleadoBuscado;
 	}
 
-	public Boolean venderProductoPorUnidad(Integer numeroLote, Cliente cliente, Integer cantProductoAComprar) {
+	public Boolean venderProductoPorUnidad(Integer numeroLote, Integer cuilCliente, Integer cantProductoAComprar) {
 		Boolean seVendio = false;
-		if (verificarMinorista(cliente)) { // Si es minorista, sigue
-
+		//if (this.buscarCliente(cliente.getCuil() )!= null)
+		if (verificarMinorista(cuilCliente)) {
 			for (int j = 0; j < productos.length; j++) {
 				if (productos[j] != null) {
 					if (productos[j].getnLote().equals(numeroLote)) {
@@ -217,7 +217,6 @@ public class Distribuidora {
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;
 		if (this.buscarEmpleado(empleado.getCuil()) != null) {
-//			if (this.comprobarSiExisteUnEmpleado(empleado)) 
 			for (int i = 0; i < productos.length; i++) {
 				if (productos[i] != null) {
 					if (productos[i].getnLote().equals(numeroLote)) {
@@ -233,11 +232,11 @@ public class Distribuidora {
 		return seVendio;
 	}
 
-	public Boolean verificarMinorista(Cliente cliente) {
+	public Boolean verificarMinorista(Integer cuilCliente) {
 		Boolean esMinorista = false;
 		for (int i = 0; i < clientes.length; i++) {
 			if (clientes[i] != null) {
-				if (clientes[i].equals(cliente)) {
+				if (clientes[i].getCuil().equals(cuilCliente)) {
 					if (clientes[i].isMayorista() == false) {
 						esMinorista = true;
 						break;
@@ -280,6 +279,19 @@ public class Distribuidora {
 		return productosVendidos;
 
 	}
+	public Producto[] lotesEnStock(){
+		return  productos;
+	}
+	public  Empleado[] empleadosContratados (){
+		return empleados;
+	}
+	public  Empleado[] empleadosDespedidos (){
+		return empleadosDespedidos;
+	}
+	public Cliente [] clientes (){
+		return clientes;
+	}
+
 
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
@@ -297,5 +309,6 @@ public class Distribuidora {
 		}
 		return existe;
 	}
+
 
 }

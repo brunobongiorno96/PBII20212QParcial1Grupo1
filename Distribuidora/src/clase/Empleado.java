@@ -89,4 +89,16 @@ public abstract class Empleado {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Empleado{" +
+				"nombre='" + nombre + '\'' +
+				", cuil=" + cuil +
+				", departamento=" + departamento +
+				", sueldoBase=" + sueldoBase +
+				", porcentajeSueldoExtra=" + porcentajeSueldoExtra +
+				", porcentajeDescuento=" + porcentajeDescuento +
+				'}';
+	}
 }
