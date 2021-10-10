@@ -199,4 +199,22 @@ public class testDistribuidora {
 
     }
 
+	@Test
+    public void queSeOrdenenClientessSegunSuCuil(){
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Departamento finanzas = new Departamento("Finanzas");
+        Empleado len = new Gerente("Len", 22,finanzas);
+        Empleado k = new Gerente("K", 21,finanzas);
+
+        distribuidora.agregarEmpleado(len);
+        distribuidora.agregarEmpleado(k);
+
+        distribuidora.ordenarEmpleadosContratados();
+        Empleado [] listaObtenida = distribuidora.getEmpleados();
+
+        Integer VALOR_ESPERADO = 21;
+
+        assertEquals(VALOR_ESPERADO, listaObtenida[0].getCuil());
+
+    }
 }
