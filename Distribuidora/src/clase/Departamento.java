@@ -31,5 +31,10 @@ public class Departamento {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Departamento [nombre=" + nombre + "]";
+	}
+
 
 }

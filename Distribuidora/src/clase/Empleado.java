@@ -77,9 +77,11 @@ public abstract class Empleado {
 			return true;
 		if (obj == null)
 			return false;
+
 // Lo comento para que no compare si las clases son distintas
 //		if (getClass() != obj.getClass())
 //			return false;
+
 		Empleado other = (Empleado) obj;
 		if (cuil == null) {
 			if (other.cuil != null)
@@ -91,13 +93,8 @@ public abstract class Empleado {
 
 	@Override
 	public String toString() {
-		return "Empleado{" +
-				"nombre='" + nombre + '\'' +
-				", cuil=" + cuil +
-				", departamento=" + departamento +
-				", sueldoBase=" + sueldoBase +
-				", porcentajeSueldoExtra=" + porcentajeSueldoExtra +
-				", porcentajeDescuento=" + porcentajeDescuento +
-				'}';
+		return "Empleado{" + "nombre='" + nombre + '\'' + ", cuil=" + cuil + ", departamento=" + departamento
+				+ ", sueldoBase=" + sueldoBase + ", porcentajeSueldoExtra=" + porcentajeSueldoExtra
+				+ ", porcentajeDescuento=" + porcentajeDescuento + '}';
 	}
 }

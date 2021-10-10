@@ -93,13 +93,18 @@ public class Distribuidora {
 	public Boolean eliminarCliente(Cliente cliente) {
 		Boolean seElimino = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if (clientes[i] != null)
+
+			if (clientes[i] != null) {
+
 				if (clientes[i].getCuil().equals(cliente.getCuil())) {
 					clientes[i] = null;
 					seElimino = true;
 					break;
 				}
+			}
+
 		}
+
 		return seElimino;
 	}
 
@@ -176,7 +181,7 @@ public class Distribuidora {
 
 	public Boolean venderProductoPorUnidad(Integer numeroLote, Integer cuilCliente, Integer cantProductoAComprar) {
 		Boolean seVendio = false;
-		//if (this.buscarCliente(cliente.getCuil() )!= null)
+		// if (this.buscarCliente(cliente.getCuil() )!= null)
 		if (verificarMinorista(cuilCliente)) {
 			for (int j = 0; j < productos.length; j++) {
 				if (productos[j] != null) {
@@ -195,6 +200,7 @@ public class Distribuidora {
 			}
 		}
 		return seVendio;
+
 	}
 
 	public Boolean venderLote(Integer numeroLote, Integer cuilCliente) {
@@ -213,6 +219,20 @@ public class Distribuidora {
 		}
 		return seVendio;
 	}
+
+	public Boolean verificarMinorista(Cliente cliente) {
+		Boolean esMinorista = false;
+		for (int i = 0; i < clientes.length; i++) {
+			if (clientes[i] != null)
+				if (clientes[i].equals(cliente))
+					if (clientes[i].isMayorista() == false)
+						esMinorista = true;
+			break;
+		}
+		return esMinorista;
+	}
+
+//	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
 
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;
@@ -279,19 +299,22 @@ public class Distribuidora {
 		return productosVendidos;
 
 	}
-	public Producto[] lotesEnStock(){
-		return  productos;
-	}
-	public  Empleado[] empleadosContratados (){
-		return empleados;
-	}
-	public  Empleado[] empleadosDespedidos (){
-		return empleadosDespedidos;
-	}
-	public Cliente [] clientes (){
-		return clientes;
+
+	public Producto[] lotesEnStock() {
+		return productos;
 	}
 
+	public Empleado[] empleadosContratados() {
+		return empleados;
+	}
+
+	public Empleado[] empleadosDespedidos() {
+		return empleadosDespedidos;
+	}
+
+	public Cliente[] clientes() {
+		return clientes;
+	}
 
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
@@ -299,16 +322,27 @@ public class Distribuidora {
 
 		for (int i = 0; i < empleados.length; i++) {
 			if (empleados[i] != null) {
-				if (empleados[i].equals(empleado))
+				if (empleados[i].equals(empleado)) {
 
 					existe = true;
+
 				break;
+				}
 
 			}
 
 		}
 		return existe;
+
 	}
-
-
+	
+	public Double calcularSueldoTotalDeEmpleados() {
+        Double sueldoTotal= 0.0;
+        for (int i = 0; i < empleados.length; i++) {
+            if(empleados[i]!=null) {
+                sueldoTotal+=empleados[i].calcularSueldo();
+            }
+        }
+        return sueldoTotal;
+    }
 }

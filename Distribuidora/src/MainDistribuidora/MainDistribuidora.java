@@ -16,9 +16,10 @@ public class MainDistribuidora {
     static final int VOLVER_ATRAS = 9;
 
     static final int SALIR = 0;
-    static final int GESTIONAR_PRODUCTOS = 1;
-    static final int GESTIONAR_EMPLEADOS = 2;
-    static final int GESTIONAR_CLIENTES = 3;
+    static final int GESTIONAR_CLIENTES = 1;
+    static final int GESTIONAR_PRODUCTOS = 2;
+    static final int GESTIONAR_EMPLEADOS = 3;
+    
 
     static final int REGISTRAR_LOTE = 1;
     static final int VENDER_LOTE = 2;
@@ -325,7 +326,7 @@ public class MainDistribuidora {
         Empleado operario = new Operativo(nombre,cuil, operativo);
         Boolean seAgrego = distribuidora.agregarEmpleado(operario);
         if (seAgrego == true){
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + operativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + operativo.getNombre());
         }
         else {
             System.out.println("No se pudo agregar el empleado");
@@ -340,7 +341,6 @@ public class MainDistribuidora {
         System.out.println("Ingrese el cuil");
         cuil  = teclado.nextInt();
 
-       do {
             System.out.println("Ingrese el departamento al cual quiere enviarlo");
             System.out.println("1- Departamento de finanzas");
             System.out.println("2- Departamento administrativo ");
@@ -359,14 +359,13 @@ public class MainDistribuidora {
 
             }
 
-        }while( opcionDeseada !=VOLVER_ATRAS);
     }
 
     private static void agregarAdministrativo(Distribuidora distribuidora, Departamento administrativo) {
         Empleado empleadoAdministrativo = new Administrativo(nombre, cuil, administrativo);
         Boolean seAgregoAdministrativo = distribuidora.agregarEmpleado(empleadoAdministrativo);
         if (seAgregoAdministrativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + administrativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + administrativo.getNombre());
         }
     }
 
@@ -374,7 +373,7 @@ public class MainDistribuidora {
         Empleado AdministrativoFinanzas = new Administrativo(nombre, cuil, finanza);
         Boolean seAgregoFinanzas = distribuidora.agregarEmpleado(AdministrativoFinanzas);
         if (seAgregoFinanzas == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + finanza.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + finanza.getNombre());
         }
     }
 
@@ -391,7 +390,7 @@ public class MainDistribuidora {
             System.out.println("Ingrese el departamento al cual quiere enviarlo");
             System.out.println("1- Departamento de finanzas");
             System.out.println("2- Departamento administrativo ");
-            System.out.println("1- Departamento operativo ");
+            System.out.println("3- Departamento operativo ");
             opcionDeseada = teclado.nextInt();
             switch (opcionDeseada){
                 case AGREGAR_FINANZAS:
@@ -414,7 +413,8 @@ public class MainDistribuidora {
         int opcionDeseada;
         System.out.println("1. Para registar un Gerente");
         System.out.println("2. Para registar un AdminIstrativo");
-        System.out.println("1. Para registar un Operario ");
+        System.out.println("3. Para registar un Operario ");
+        System.out.println("9. Volver atras ");
         opcionDeseada = teclado.nextInt();
         return opcionDeseada;
     }
@@ -423,7 +423,7 @@ public class MainDistribuidora {
         Empleado gerenteAdministrativo = new Gerente(nombre, cuil, operativo);
         Boolean seAgregoOperativo = distribuidora.agregarEmpleado(gerenteAdministrativo);
         if (seAgregoOperativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + operativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + operativo.getNombre());
         }
     }
 
@@ -431,7 +431,7 @@ public class MainDistribuidora {
         Empleado gerenteAdministrativo = new Gerente(nombre, cuil, administrativo);
         Boolean seAgregoAdministrativo = distribuidora.agregarEmpleado(gerenteAdministrativo);
         if (seAgregoAdministrativo == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + administrativo.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + administrativo.getNombre());
         }
     }
 
@@ -439,7 +439,7 @@ public class MainDistribuidora {
         Empleado gerenteFinanzas = new Gerente(nombre, cuil, finanza);
         Boolean seAgregoFinanzas = distribuidora.agregarEmpleado(gerenteFinanzas);
         if (seAgregoFinanzas == true) {
-            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento" + finanza.getNombre());
+            System.out.println("Se agrego el empleado con cuil: " + cuil + " al departemento " + finanza.getNombre());
         }
     }
 
@@ -697,9 +697,9 @@ public class MainDistribuidora {
         int opcionDeseada;
         System.out.println("************************");
         System.out.println("Menu de opciones");
-        System.out.println("1 - Para gestionar Productos");
-        System.out.println("2 - Para gestionar Empleados");
-        System.out.println("3 - Para gestionar Clientes");
+        System.out.println("1 - Para gestionar Clientes");
+        System.out.println("2 - Para gestionar Productos");
+        System.out.println("3 - Para gestionar Empleados");
         System.out.println("0 - Salir");
         System.out.println("************************");
         System.out.println("Ingrese una opcion");

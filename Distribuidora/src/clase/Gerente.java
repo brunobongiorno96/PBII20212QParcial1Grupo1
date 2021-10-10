@@ -12,6 +12,7 @@ public class Gerente extends Empleado {
 	@Override
 	public Double calcularSueldo() {
 
+
 		Double sueldoFinal = 0.0;
 		sueldoFinal += getSueldoBase() + super.getPorcentajeExtraSueldo();
 		return sueldoFinal;
