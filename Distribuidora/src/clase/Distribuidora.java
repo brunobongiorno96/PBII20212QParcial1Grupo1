@@ -93,13 +93,18 @@ public class Distribuidora {
 	public Boolean eliminarCliente(Cliente cliente) {
 		Boolean seElimino = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if (clientes[i] != null)
+
+			if (clientes[i] != null) {
+
 				if (clientes[i].getCuil().equals(cliente.getCuil())) {
 					clientes[i] = null;
 					seElimino = true;
 					break;
 				}
+			}
+
 		}
+
 		return seElimino;
 	}
 
@@ -161,6 +166,7 @@ public class Distribuidora {
 	}
 
 //	Dudo que lo usemos pero lo hice buscando vender a empleado un lote
+//Spoiler, si lo usamos
 	public Empleado buscarEmpleado(Integer cuil) {
 		Empleado empleadoBuscado = null;
 		for (int i = 0; i < empleados.length; i++) {
@@ -174,10 +180,10 @@ public class Distribuidora {
 		return empleadoBuscado;
 	}
 
-	public Boolean venderProductoPorUnidad(Integer numeroLote, Cliente cliente, Integer cantProductoAComprar) {
+	public Boolean venderProductoPorUnidad(Integer numeroLote, Integer cuilCliente, Integer cantProductoAComprar) {
 		Boolean seVendio = false;
-		if (verificarMinorista(cliente)) { // Si es minorista, sigue
-
+		// if (this.buscarCliente(cliente.getCuil() )!= null)
+		if (verificarMinorista(cuilCliente)) {
 			for (int j = 0; j < productos.length; j++) {
 				if (productos[j] != null) {
 					if (productos[j].getnLote().equals(numeroLote)) {
@@ -195,6 +201,7 @@ public class Distribuidora {
 			}
 		}
 		return seVendio;
+
 	}
 
 	public Boolean venderLote(Integer numeroLote, Integer cuilCliente) {
@@ -214,10 +221,27 @@ public class Distribuidora {
 		return seVendio;
 	}
 
+	public Boolean verificarMinorista(Cliente cliente) {
+		Boolean esMinorista = false;
+		for (int i = 0; i < clientes.length; i++) {
+			if (clientes[i] != null) {
+				if (clientes[i].equals(cliente)) {
+					if (clientes[i].isMayorista() == false) {
+						esMinorista = true;
+						break;
+					}
+				}
+			}
+		}
+		return esMinorista;
+	}
+
+//	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
+//Arreglado: Problemas tecnicos sobre las llaves	
+
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;
 		if (this.buscarEmpleado(empleado.getCuil()) != null) {
-//			if (this.comprobarSiExisteUnEmpleado(empleado)) 
 			for (int i = 0; i < productos.length; i++) {
 				if (productos[i] != null) {
 					if (productos[i].getnLote().equals(numeroLote)) {
@@ -233,11 +257,11 @@ public class Distribuidora {
 		return seVendio;
 	}
 
-	public Boolean verificarMinorista(Cliente cliente) {
+	public Boolean verificarMinorista(Integer cuilCliente) {
 		Boolean esMinorista = false;
 		for (int i = 0; i < clientes.length; i++) {
 			if (clientes[i] != null) {
-				if (clientes[i].equals(cliente)) {
+				if (clientes[i].getCuil().equals(cuilCliente)) {
 					if (clientes[i].isMayorista() == false) {
 						esMinorista = true;
 						break;
@@ -280,31 +304,83 @@ public class Distribuidora {
 		return productosVendidos;
 
 	}
-	public Double calcularSueldoTotalDeEmpleados() {
-		Double sueldoTotal= 0.0;
-		for (int i = 0; i < empleados.length; i++) {
-			if(empleados[i]!=null) {
-				sueldoTotal+=empleados[i].calcularSueldo();
-			}
-		}
-		return sueldoTotal;
-	} 
-	
+
+	public Producto[] lotesEnStock() {
+		return productos;
+	}
+
+	public Empleado[] empleadosContratados() {
+		return empleados;
+	}
+
+	public Empleado[] empleadosDespedidos() {
+		return empleadosDespedidos;
+	}
+
+	public Cliente[] clientes() {
+		return clientes;
+	}
+
+//	Problemas con llaves arreglados
+
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
 		Boolean existe = false;
 
 		for (int i = 0; i < empleados.length; i++) {
 			if (empleados[i] != null) {
-				if (empleados[i].equals(empleado))
+				if (empleados[i].equals(empleado)) {
 
 					existe = true;
-				break;
+
+					break;
+				}
 
 			}
 
 		}
 		return existe;
+
+	}
+
+	public Double calcularSueldoTotalDeEmpleados() {
+		Double sueldoTotal = 0.0;
+		for (int i = 0; i < empleados.length; i++) {
+			if (empleados[i] != null) {
+				sueldoTotal += empleados[i].calcularSueldo();
+			}
+		}
+		return sueldoTotal;
+	}
+
+	public void ordenarClientesSegunSuCuil() {
+		Cliente auxiliarOrdenamiento;
+		for (int i = 1; i < clientes.length; i++) {
+			for (int j = 0; j < (clientes.length - 1); j++) {
+				if (clientes[j] != null && clientes[j + 1] != null) {
+					if (clientes[j].getCuil() > clientes[j + 1].getCuil()) {
+						auxiliarOrdenamiento = clientes[j + 1];
+						clientes[j + 1] = clientes[j];
+						clientes[j] = auxiliarOrdenamiento;
+					}
+				}
+			}
+		}
+	}
+
+	public void ordenarEmpleadosContratados() {
+		Empleado auxiliarOrdenamiento;
+		for (int i = 1; i < empleados.length; i++) {
+			for (int j = 0; j < (empleados.length - 1); j++) {
+				if (empleados[j] != null && empleados[j + 1] != null) {
+					if (empleados[j].getCuil() > empleados[j + 1].getCuil()) {
+						auxiliarOrdenamiento = empleados[j + 1];
+						empleados[j + 1] = empleados[j];
+						empleados[j] = auxiliarOrdenamiento;
+					}
+				}
+			}
+		}
 	}
 
 }

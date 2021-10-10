@@ -1,20 +1,22 @@
 package clase;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.Objects;
 
 public class Producto {
 
    private String nombre;
    private Integer nLote;
+//   private TipoApto tipoApto;
    private Double precio;
+
    private Integer cantidadDeProductosEnLaCaja;
 
     public Producto(String nombre, Integer nLote, Double precio, Integer cantidadDeProductosEnLaCaja) {
         this.nombre = nombre;
         this.nLote = nLote;
         this.precio = precio;
+
         this.cantidadDeProductosEnLaCaja = cantidadDeProductosEnLaCaja;
     }
 
@@ -42,7 +44,6 @@ public class Producto {
         this.nLote = nLote;
     }
 
-    
 
     public Double getPrecio() {
         return precio;
@@ -52,7 +53,9 @@ public class Producto {
         this.precio = precio;
     }
 
-   
+
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -65,5 +68,16 @@ public class Producto {
     @Override
     public int hashCode() {
         return Objects.hash(nombre, nLote);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", nLote=" + nLote +
+//                ", tipoApto=" + tipoApto +
+                ", precio=" + precio +
+                ", cantidadDeProductosEnLaCaja=" + cantidadDeProductosEnLaCaja +
+                '}';
     }
 }

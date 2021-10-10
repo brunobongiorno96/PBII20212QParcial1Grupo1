@@ -12,6 +12,7 @@ public class Administrativo extends Empleado {
 	@Override
 	public Double calcularSueldo() {
 
+
 		Double sueldoFinal = 0.0;
 		sueldoFinal += getSueldoBase() + (getSueldoBase() * super.getPorcentajeExtraSueldo());
 		return sueldoFinal;
@@ -25,6 +26,7 @@ public class Administrativo extends Empleado {
 		Double valorTotal = 0.0;
 		valorTotal = 1.0 - this.getPorcentajeDescuento();
 		return valorTotal;
+
 	}
 
 }

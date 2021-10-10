@@ -11,6 +11,7 @@ public class Operativo extends Empleado {
 	@Override
 	public Double calcularSueldo() {
 
+
 		Double sueldoFinal = 0.0;
 		sueldoFinal += getSueldoBase() + (getSueldoBase() * super.getPorcentajeExtraSueldo());
 		return sueldoFinal;

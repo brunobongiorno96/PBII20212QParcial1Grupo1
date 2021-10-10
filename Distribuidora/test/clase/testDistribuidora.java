@@ -57,6 +57,8 @@ public class testDistribuidora {
 		String valorEsperado = "haziel";
 
 		assertEquals(valorEsperado, listaDeEmpleadosDespedidos[0].getNombre());
+		assertEquals(null, listaDeEmpleados[0]);
+		
 	}
 
 	@Test
@@ -98,6 +100,31 @@ public class testDistribuidora {
 		assertEquals(sueldoEsperadoLen, len.calcularSueldo(), 0.01);
 		assertEquals(sueldoEsperadoK, k.calcularSueldo(), 0.01);
 		assertEquals(sueldoEsperadoU, u.calcularSueldo(), 0.01);
+	}
+
+	@Test
+	public void queSeCalculeElTotalDeSueldos() {
+
+		Distribuidora nueva = new Distribuidora("Wawa");
+		Departamento departamento = new Departamento("DepartamentoNombre");
+		Empleado len = new Gerente("Len", 20, departamento);
+		Empleado k = new Administrativo("K", 19, departamento);
+		Empleado u = new Operativo("U", 11, departamento);
+
+		nueva.agregarEmpleado(len);
+		nueva.agregarEmpleado(k);
+		nueva.agregarEmpleado(u);
+
+		Double sueldoEsperadoLen = len.getSueldoBase() + 4000.0;
+		Double sueldoEsperadoK = k.getSueldoBase() + (k.getSueldoBase() * 0.05);
+		Double sueldoEsperadoU = u.getSueldoBase() + (u.getSueldoBase() * 0.1);
+
+		Double sueldoEsperadoTotal = (sueldoEsperadoK + sueldoEsperadoLen + sueldoEsperadoU);
+
+		assertEquals(sueldoEsperadoLen, len.calcularSueldo(), 0.01);
+		assertEquals(sueldoEsperadoK, k.calcularSueldo(), 0.01);
+		assertEquals(sueldoEsperadoU, u.calcularSueldo(), 0.01);
+		assertEquals(sueldoEsperadoTotal, nueva.calcularSueldoTotalDeEmpleados(), 0.01);
 
 	}
 
@@ -123,15 +150,23 @@ public class testDistribuidora {
 	}
 
 	@Test
-	public void queNoSePuedaAgregarDosClientesConMismoCuil() {
-		Distribuidora distribuidora = new Distribuidora("NombreDistri");
-		Cliente len = new Cliente("Len", 22);
-		Cliente k = new Cliente("K", 22);
+    public void queNoSePuedaAgregarDosClientesConMismoCuil() {
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Cliente len = new Cliente("Len", 22);
+        Cliente k = new Cliente("K", 22);
 
-		distribuidora.agregarCLiente(len);
-		assertFalse(distribuidora.agregarCLiente(k));
 
-	}
+        distribuidora.agregarCLiente(len);
+        distribuidora.agregarCLiente(k);
+        Integer VALOR_ESPERADO = 22;
+        Cliente VALOR_ESPERADO_DOS = null;
+
+        Cliente [] listaObtenida = distribuidora.getClientes();
+
+        assertEquals(VALOR_ESPERADO,listaObtenida[0].getCuil());
+        assertEquals(VALOR_ESPERADO_DOS,listaObtenida[1]);
+
+    }
 
 	@Test
 	public void queSePuedaBuscarUnClientePorSuCuil() {
@@ -146,5 +181,40 @@ public class testDistribuidora {
 		assertEquals(CUIL_ESPERADO, listObtenida.getCuil());
 
 	}
+	@Test
+    public void queSeOrdenenClientesSegunSuDni(){
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Cliente len = new Cliente("Len", 22);
+        Cliente k = new Cliente("K", 21);
 
+        distribuidora.agregarCLiente(len);
+        distribuidora.agregarCLiente(k);
+
+        distribuidora.ordenarClientesSegunSuCuil();
+        Cliente [] listaObtenida = distribuidora.getClientes();
+
+        Integer VALOR_ESPERADO = 21;
+
+        assertEquals(VALOR_ESPERADO, listaObtenida[0].getCuil());
+
+    }
+
+	@Test
+    public void queSeOrdenenClientessSegunSuCuil(){
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Departamento finanzas = new Departamento("Finanzas");
+        Empleado len = new Gerente("Len", 22,finanzas);
+        Empleado k = new Gerente("K", 21,finanzas);
+
+        distribuidora.agregarEmpleado(len);
+        distribuidora.agregarEmpleado(k);
+
+        distribuidora.ordenarEmpleadosContratados();
+        Empleado [] listaObtenida = distribuidora.getEmpleados();
+
+        Integer VALOR_ESPERADO = 21;
+
+        assertEquals(VALOR_ESPERADO, listaObtenida[0].getCuil());
+
+    }
 }
