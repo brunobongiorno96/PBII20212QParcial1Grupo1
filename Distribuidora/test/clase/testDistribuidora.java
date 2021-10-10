@@ -57,6 +57,8 @@ public class testDistribuidora {
 		String valorEsperado = "haziel";
 
 		assertEquals(valorEsperado, listaDeEmpleadosDespedidos[0].getNombre());
+		assertEquals(null, listaDeEmpleados[0]);
+		
 	}
 
 	@Test
@@ -148,15 +150,23 @@ public class testDistribuidora {
 	}
 
 	@Test
-	public void queNoSePuedaAgregarDosClientesConMismoCuil() {
-		Distribuidora distribuidora = new Distribuidora("NombreDistri");
-		Cliente len = new Cliente("Len", 22);
-		Cliente k = new Cliente("K", 22);
+    public void queNoSePuedaAgregarDosClientesConMismoCuil() {
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Cliente len = new Cliente("Len", 22);
+        Cliente k = new Cliente("K", 22);
 
-		distribuidora.agregarCLiente(len);
-		assertFalse(distribuidora.agregarCLiente(k));
 
-	}
+        distribuidora.agregarCLiente(len);
+        distribuidora.agregarCLiente(k);
+        Integer VALOR_ESPERADO = 22;
+        Cliente VALOR_ESPERADO_DOS = null;
+
+        Cliente [] listaObtenida = distribuidora.getClientes();
+
+        assertEquals(VALOR_ESPERADO,listaObtenida[0].getCuil());
+        assertEquals(VALOR_ESPERADO_DOS,listaObtenida[1]);
+
+    }
 
 	@Test
 	public void queSePuedaBuscarUnClientePorSuCuil() {
@@ -171,5 +181,22 @@ public class testDistribuidora {
 		assertEquals(CUIL_ESPERADO, listObtenida.getCuil());
 
 	}
+	@Test
+    public void queSeOrdenenClientesSegunSuDni(){
+        Distribuidora distribuidora = new Distribuidora("NombreDistri");
+        Cliente len = new Cliente("Len", 22);
+        Cliente k = new Cliente("K", 21);
+
+        distribuidora.agregarCLiente(len);
+        distribuidora.agregarCLiente(k);
+
+        distribuidora.ordenarClientesSegunSuCuil();
+        Cliente [] listaObtenida = distribuidora.getClientes();
+
+        Integer VALOR_ESPERADO = 21;
+
+        assertEquals(VALOR_ESPERADO, listaObtenida[0].getCuil());
+
+    }
 
 }

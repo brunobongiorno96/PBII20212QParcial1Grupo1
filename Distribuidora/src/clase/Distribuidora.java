@@ -166,6 +166,7 @@ public class Distribuidora {
 	}
 
 //	Dudo que lo usemos pero lo hice buscando vender a empleado un lote
+//Spoiler, si lo usamos
 	public Empleado buscarEmpleado(Integer cuil) {
 		Empleado empleadoBuscado = null;
 		for (int i = 0; i < empleados.length; i++) {
@@ -223,16 +224,20 @@ public class Distribuidora {
 	public Boolean verificarMinorista(Cliente cliente) {
 		Boolean esMinorista = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if (clientes[i] != null)
-				if (clientes[i].equals(cliente))
-					if (clientes[i].isMayorista() == false)
+			if (clientes[i] != null) {
+				if (clientes[i].equals(cliente)) {
+					if (clientes[i].isMayorista() == false) {
 						esMinorista = true;
-			break;
+						break;
+					}
+				}
+			}
 		}
 		return esMinorista;
 	}
 
 //	Duda con este metodo, me tira false en test al agregar otro empleado a comprar
+//Arreglado: Problemas tecnicos sobre las llaves	
 
 	public Boolean venderLoteAEmpleado(Integer numeroLote, Empleado empleado) {
 		Boolean seVendio = false;
@@ -316,6 +321,7 @@ public class Distribuidora {
 		return clientes;
 	}
 
+//	Problemas con llaves arreglados
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
 		Boolean existe = false;
@@ -326,7 +332,7 @@ public class Distribuidora {
 
 					existe = true;
 
-				break;
+					break;
 				}
 
 			}
@@ -335,14 +341,45 @@ public class Distribuidora {
 		return existe;
 
 	}
-	
+
 	public Double calcularSueldoTotalDeEmpleados() {
-        Double sueldoTotal= 0.0;
-        for (int i = 0; i < empleados.length; i++) {
-            if(empleados[i]!=null) {
-                sueldoTotal+=empleados[i].calcularSueldo();
-            }
-        }
-        return sueldoTotal;
-    }
+		Double sueldoTotal = 0.0;
+		for (int i = 0; i < empleados.length; i++) {
+			if (empleados[i] != null) {
+				sueldoTotal += empleados[i].calcularSueldo();
+			}
+		}
+		return sueldoTotal;
+	}
+
+	public void ordenarClientesSegunSuCuil() {
+		Cliente auxiliarOrdenamiento;
+		for (int i = 1; i < clientes.length; i++) {
+			for (int j = 0; j < (clientes.length - 1); j++) {
+				if (clientes[j] != null && clientes[j + 1] != null) {
+					if (clientes[j].getCuil() > clientes[j + 1].getCuil()) {
+						auxiliarOrdenamiento = clientes[j + 1];
+						clientes[j + 1] = clientes[j];
+						clientes[j] = auxiliarOrdenamiento;
+					}
+				}
+			}
+		}
+	}
+
+	public void ordenarEmpleadosContratados() {
+		Empleado auxiliarOrdenamiento;
+		for (int i = 1; i < empleados.length; i++) {
+			for (int j = 0; j < (empleados.length - 1); j++) {
+				if (empleados[j] != null && empleados[j + 1] != null) {
+					if (empleados[j].getCuil() > empleados[j + 1].getCuil()) {
+						auxiliarOrdenamiento = empleados[j + 1];
+						empleados[j + 1] = empleados[j];
+						empleados[j] = auxiliarOrdenamiento;
+					}
+				}
+			}
+		}
+	}
+
 }

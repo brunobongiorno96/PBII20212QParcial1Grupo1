@@ -1,14 +1,13 @@
 package clase;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.Objects;
 
 public class Producto {
 
    private String nombre;
    private Integer nLote;
-   private TipoApto tipoApto;
+//   private TipoApto tipoApto;
    private Double precio;
 
    private Integer cantidadDeProductosEnLaCaja;
@@ -76,7 +75,7 @@ public class Producto {
         return "Producto{" +
                 "nombre='" + nombre + '\'' +
                 ", nLote=" + nLote +
-                ", tipoApto=" + tipoApto +
+//                ", tipoApto=" + tipoApto +
                 ", precio=" + precio +
                 ", cantidadDeProductosEnLaCaja=" + cantidadDeProductosEnLaCaja +
                 '}';

@@ -1,6 +1,5 @@
 package clase;
 
-import java.util.Date;
 
 public class PanLactal extends  Producto{
 
