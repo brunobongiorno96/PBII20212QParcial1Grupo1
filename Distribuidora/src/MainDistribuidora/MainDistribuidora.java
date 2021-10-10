@@ -8,7 +8,6 @@ public class MainDistribuidora {
     static final Scanner teclado = new Scanner(System.in);
 
     static String nombre;
-    static String nombreDepartamento;
     static Integer numLote;
     static Double precio;
     static Integer cuil;
@@ -117,6 +116,7 @@ public class MainDistribuidora {
     }
 
     private static void mostrarClientes(Distribuidora distribuidora) {
+       distribuidora.ordenarClientesSegunSuCuil();
         Cliente [] clientesEncontrados = distribuidora.clientes();
         if (clientesEncontrados != null){
             for (int i = 0; i < clientesEncontrados.length; i++) {
@@ -251,6 +251,7 @@ public class MainDistribuidora {
     }
 
     private static void mostrarEmpleados(Distribuidora distribuidora) {
+     distribuidora.ordenarEmpleadosContratados();
         Empleado[] contratados = distribuidora.empleadosContratados();
         if (contratados != null) {
             for (int i = 0; i < contratados.length; i++) {
@@ -467,6 +468,7 @@ public class MainDistribuidora {
 
                 case VENDER_LOTE:
                     venderLote(distribuidora);
+                    break;
 
                 case BUSCAR_LOTE:
                     buscarLote(distribuidora);
