@@ -280,7 +280,16 @@ public class Distribuidora {
 		return productosVendidos;
 
 	}
-
+	public Double calcularSueldoTotalDeEmpleados() {
+		Double sueldoTotal= 0.0;
+		for (int i = 0; i < empleados.length; i++) {
+			if(empleados[i]!=null) {
+				sueldoTotal+=empleados[i].calcularSueldo();
+			}
+		}
+		return sueldoTotal;
+	} 
+	
 	public Boolean comprobarSiExisteUnEmpleado(Empleado empleado) {
 
 		Boolean existe = false;
